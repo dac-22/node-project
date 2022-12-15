@@ -1,7 +1,7 @@
 import { createConnection } from "mysql";
 
 function main() {
-  console.log("MYSQL DEMO");
+  console.log("MYSQL QUERY DEMO");
 
   let connectionUri = {
     host: "localhost",
@@ -10,15 +10,12 @@ function main() {
     database: "cdac",
   };
 
-  // preparting the connection with details
   let connection = createConnection(connectionUri);
-
-  // opening the connection
   connection.connect();
 
-  console.log("Connection DONE!");
+  let sql = `INSERT INTO message (message, reply) VALUES ('Hello World', 0)`;
+  connection.query(sql);
 
-  // close the connection
   connection.end();
 }
 
