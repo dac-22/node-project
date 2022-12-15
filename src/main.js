@@ -1,15 +1,25 @@
-// import {sum} from "./mymath.js"; // local module
-import { readFile } from "node:fs/promises"; // node fs module
+import { createConnection } from "mysql";
 
-async function main() {
-  console.log("READ FILE DEMO");
+function main() {
+  console.log("MYSQL DEMO");
 
-  let filepath = "/Users/research/Desktop/dac-22/dac-22-kochi/day2/1.html";
-  // let output =  readFile(filepath);
-  // let output = await readFile(filepath);
-  let output = await readFile(filepath, { encoding: "utf8" });
+  let connectionUri = {
+    host: "localhost",
+    user: "root",
+    password: "mysql",
+    database: "cdac",
+  };
 
-  console.log(output);
+  // preparting the connection with details
+  let connection = createConnection(connectionUri);
+
+  // opening the connection
+  connection.connect();
+
+  console.log("Connection DONE!");
+
+  // close the connection
+  connection.end();
 }
 
 main();
