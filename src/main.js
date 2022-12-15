@@ -1,11 +1,15 @@
-import { sum, mul } from "./mymath.js";
+// import {sum} from "./mymath.js"; // local module
+import { readFile } from "node:fs/promises"; // node fs module
 
-function main() {
-  let output = sum(1, 1);
-  console.log("Output", output);
+async function main() {
+  console.log("READ FILE DEMO");
 
-  let output1 = mul(2, 5);
-  console.log("Mul", output1);
+  let filepath = "/Users/research/Desktop/dac-22/dac-22-kochi/day2/1.html";
+  // let output =  readFile(filepath);
+  // let output = await readFile(filepath);
+  let output = await readFile(filepath, { encoding: "utf8" });
+
+  console.log(output);
 }
 
 main();
